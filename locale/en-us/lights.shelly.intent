@@ -1,1 +1,1 @@
-(switch | turn) {name} (light | ) {state}
+(switch | turn) (the | ) {name} (light | ) {state}
