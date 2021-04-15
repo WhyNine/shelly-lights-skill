@@ -15,17 +15,17 @@ class ShellyLights(MycroftSkill):
 
     @intent_handler('lights.shelly.intent')
     def handle_lights_shelly(self, message):
-        light{'name'} = message.data.get('name')
-        light{'state'} = message.data.get('state')
-        LOGGER.info(f"Trying to turn {light{'name'}} {light{'state'}}")
-        if (self.names{light{'name'}} is None):
-            self.speak_dialog('unknown', data={'name': light{'name'}}, wait=False)
+        name = message.data.get('name')
+        state = message.data.get('state')
+        LOGGER.info(f"Trying to turn {name} {state}")
+        if (self.names{name} is None):
+            self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
-        res = requests.get('http://' + self.names{light{'name'}} + '/relay/0?turn=' + light{'state'})
+        res = requests.get('http://' + self.names{name} + '/relay/0?turn=' + state)
         if (res.status_code == 200):
-            self.speak_dialog('lights.shelly', data={'name': light{'name'}, 'state': light{'state'}}, wait=False)
+            self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
         else:
-            self.speak_dialog('fail', data={'name': light{'name'}, 'state': light{'state'}}, wait=False)
+            self.speak_dialog('fail', data={'name': name, 'state': state}, wait=False)
 
     def on_settings_changed(self):
         self.get_settings()
