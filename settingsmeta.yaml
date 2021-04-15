@@ -1,22 +1,37 @@
 
 skillMetadata:
   sections:
-    - name: Options << Name of section
+    - name: Shelly light details
       fields:
-        - name: internal_python_variable_name
+        - name: name1
           type: text
-          label: Setting Friendly Display Name
+          label: Your name for light 1
           value: ""
-          placeholder: demo prompt in the input box
-    - name: Login << Name of another section
-      fields:
-        - type: label
-          label: Just a little bit of extra info for the user to understand following settings
-        - name: username
+        - name: ip1
           type: text
-          label: Username
+          label: IP address (x.x.x.x)
           value: ""
-        - name: password
-          type: password
-          label: Password
+        - name: name2
+          type: text
+          label: Your name for light 2
+          value: ""
+        - name: ip2
+          type: text
+          label: IP address (x.x.x.x)
+          value: ""
+        - name: name3
+          type: text
+          label: Your name for light 3
+          value: ""
+        - name: ip3
+          type: text
+          label: IP address (x.x.x.x)
+          value: ""
+        - name: name4
+          type: text
+          label: Your name for light 4
+          value: ""
+        - name: ip4
+          type: text
+          label: IP address (x.x.x.x)
           value: ""
