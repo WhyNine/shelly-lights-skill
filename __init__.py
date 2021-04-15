@@ -18,7 +18,7 @@ class ShellyLights(MycroftSkill):
         name = message.data.get('name')
         state = message.data.get('state')
         LOGGER.info(f"Trying to turn {name} {state}")
-        if (name in self.names):
+        if (not name in self.names):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
         res = requests.get('http://' + self.names[name] + '/relay/0?turn=' + state)
