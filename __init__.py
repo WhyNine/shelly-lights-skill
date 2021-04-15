@@ -18,10 +18,10 @@ class ShellyLights(MycroftSkill):
         name = message.data.get('name')
         state = message.data.get('state')
         LOGGER.info(f"Trying to turn {name} {state}")
-        if (self.names{name} is None):
+        if (self.names[name] is None):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
-        res = requests.get('http://' + self.names{name} + '/relay/0?turn=' + state)
+        res = requests.get('http://' + self.names[name] + '/relay/0?turn=' + state)
         if (res.status_code == 200):
             self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
         else:
@@ -43,7 +43,7 @@ class ShellyLights(MycroftSkill):
             except AddressValueError:
                 LOGGER.info(f"Bad IP address for {name}")
                 next
-            self.names{name} = ip
+            self.names[name] = ip
 
 
 def create_skill():
