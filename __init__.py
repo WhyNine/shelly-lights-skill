@@ -40,7 +40,7 @@ class ShellyLights(MycroftSkill):
             ip = self.settings.get(f'ip{i}', "")
             try:
                 ipaddress.IPv4Address(ip)
-            except AddressValueError:
+            except:
                 LOGGER.info(f"Bad IP address for {name}")
                 next
             self.names[name] = ip
