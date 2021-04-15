@@ -33,11 +33,11 @@ class ShellyLights(MycroftSkill):
     def get_settings(self):
         self.names = {}
         for i in range(1, 4):
-            name = self.settings.get(f'name{i}', "")
+            name = self.settings.get(f"name{i}", "")
             if ((name is None) or (len(name) < 4)):
                 LOGGER.debug(f"Skipping name {i} (missing name or too short)")
                 next
-            ip = self.settings.get(f'ip{i}', "")
+            ip = self.settings.get(f"ip{i}", "")
             try:
                 ipaddress.IPv4Address(ip)
             except:
