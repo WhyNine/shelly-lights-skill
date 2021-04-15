@@ -1,2 +1,1 @@
-Switch hall light on
-Turn lounge off
+(switch | turn) {name} (light | ) {state}
