@@ -1,4 +1,5 @@
 from mycroft import MycroftSkill, intent_handler
+from adapt.intent import IntentBuilder
 import requests
 import ipaddress
 from mycroft.util.log import getLogger
@@ -13,7 +14,12 @@ class ShellyLights(MycroftSkill):
         self.settings_change_callback = self.on_settings_changed
         self.get_settings()
 
-    @intent_handler('lights.shelly.intent')
+#    @intent_handler('lights.shelly.intent')
+    @intent_handler(IntentBuilder('shelly-intent')
+                              .require('shelly-keywords')
+                              .require('shelly-on-off')
+                              .require('shelly-regex')
+                              .optionally('shelly-light'))
     def handle_lights_shelly(self, message):
         name = message.data.get('name')
         state = message.data.get('state')

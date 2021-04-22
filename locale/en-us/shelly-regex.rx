@@ -1,0 +1,2 @@
+(switch|turn) (?P<name>\w) (light |)(?P<state>(on|off))
+(switch|turn) (?P<state>(on|off)) (?P<name>\w)( light|)
