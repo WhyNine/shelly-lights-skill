@@ -16,9 +16,9 @@ class ShellyLights(MycroftSkill):
 
 #    @intent_handler('lights.shelly.intent')
     @intent_handler(IntentBuilder('shelly-intent')
-#                              .require('shelly-keywords')
+                              .require('shelly-keywords')
 #                              .require('shelly-on-off')
-                              .require('shelly-regex'))
+#                              .require('shelly-regex'))
 #                              .optionally('shelly-light'))
     def handle_lights_shelly(self, message):
         name = message.data.get('name')
