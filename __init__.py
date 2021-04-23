@@ -15,11 +15,6 @@ class ShellyLights(MycroftSkill):
         self.get_settings()
 
     @intent_handler('lights.shelly.intent')
-#    @intent_handler(IntentBuilder('shelly-intent')
-#                              .require('shelly-keywords')
-#                              .require('shelly-on-off')
-#                              .require('shelly-regex'))
-#                              .optionally('shelly-light'))
     def handle_lights_shelly(self, message):
         name = message.data.get('name')
         state = message.data.get('state')
@@ -27,9 +22,8 @@ class ShellyLights(MycroftSkill):
         if (not name in self.names):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
-        LOGGER.info(f"IP address of {name} is {self.names[name]}")
         res = requests.get(url='http://' + self.names[name] + '/relay/0?turn=' + state,auth=("waller", "croft"))
-        LOGGER.info(f"Result code = {res.status_code}, text = {res.text}")
+        LOGGER.debug(f"Result code = {res.status_code}, text = {res.text}")
         if (res.ok):
             self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
         else:
