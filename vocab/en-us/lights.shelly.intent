@@ -1,4 +1,6 @@
 (switch | turn) the {{name}} light {{state}}
 (switch | turn) {{name}} light {{state}}
 (switch | turn) {{name}} {{state}}
+(switch | turn) {{state}} the {{name}} light
+(switch | turn) {{state}} {{name}} light
 (switch | turn) {{state}} {{name}}

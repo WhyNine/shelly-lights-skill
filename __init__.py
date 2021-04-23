@@ -29,7 +29,8 @@ class ShellyLights(MycroftSkill):
             return
         LOGGER.info(f"IP address of {name} is {self.names[name]}")
         res = requests.get('http://' + self.names[name] + '/relay/0?turn=' + state)
-        if (res.status_code == 200):
+        LOGGER.info(f"Result code = {res.status_code}, text = {res.text}")
+        if (res.ok):
             self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
         else:
             self.speak_dialog('fail', data={'name': name, 'state': state}, wait=False)
