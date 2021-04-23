@@ -27,6 +27,7 @@ class ShellyLights(MycroftSkill):
         if (not name in self.names):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
+        LOGGER.info(f"IP address of {name} is {self.names[name]}")
         res = requests.get('http://' + self.names[name] + '/relay/0?turn=' + state)
         if (res.status_code == 200):
             self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
@@ -50,6 +51,7 @@ class ShellyLights(MycroftSkill):
                 LOGGER.info(f"Bad IP address for {name}")
                 continue
             self.names[name] = ip
+            LOGGER.info(f"Added light '{name}' at IP address '{ip}'")
 
 
 def create_skill():
