@@ -28,7 +28,7 @@ class ShellyLights(MycroftSkill):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
         LOGGER.info(f"IP address of {name} is {self.names[name]}")
-        res = requests.get('http://' + self.names[name] + '/relay/0?turn=' + state)
+        res = requests.get(url='http://' + self.names[name] + '/relay/0?turn=' + state,auth=("waller", "croft"))
         LOGGER.info(f"Result code = {res.status_code}, text = {res.text}")
         if (res.ok):
             self.speak_dialog('lights.shelly', data={'name': name, 'state': state}, wait=False)
