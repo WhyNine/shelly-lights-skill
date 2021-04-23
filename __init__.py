@@ -23,7 +23,7 @@ class ShellyLights(MycroftSkill):
     def handle_lights_shelly(self, message):
         name = message.data.get('name')
         state = message.data.get('state')
-        LOGGER.info(f"Trying to turn {name} {state}")
+        LOGGER.info(f"Trying to change state of light '{name}' to '{state}'")
         if (not name in self.names):
             self.speak_dialog('unknown', data={'name': name}, wait=False)
             return
