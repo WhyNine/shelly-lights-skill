@@ -13,8 +13,8 @@ class ShellyLights(MycroftSkill):
         self.settings_change_callback = self.on_settings_changed
         self.get_settings()
 
-    self.register_entity_file("name.entity")
-    self.register_entity_file("state.entity")
+    register_entity_file("name.entity")
+    register_entity_file("state.entity")
     @intent_handler('lights.shelly.intent')
     def handle_lights_shelly(self, message):
         name = message.data.get('name')
